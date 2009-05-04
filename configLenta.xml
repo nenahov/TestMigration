@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<ROOT>
+	
+	<Params separator=";" timeout="60" drivers="com.microsoft.sqlserver.jdbc.SQLServerDriver">
+	</Params>
+	
+	<Servers>
+<Server ip="10.0.253.203" database="SES_Centrum" user="sa" password="vangelis" name="-1; 10.0.253.203 ЛЕНТА - Centrum"></Server>
+<Server ip="10.1.0.248" database="SES" user="sa" password="vangelis" name="1; 10.1.0.248 ТК ЛЕНТА - 1 (Энергетиков)"></Server>
+<Server ip="10.0.2.248" database="SES" user="sa" password="vangelis" name="2; 10.0.2.248 ТК ЛЕНТА - 2 (Савушкина)"></Server>
+<Server ip="10.0.3.248" database="SES" user="sa" password="vangelis" name="3; 10.0.3.248 ТК ЛЕНТА - 3 (Шереметьевская)"></Server>
+<Server ip="10.0.4.247" database="SES" user="sa" password="vangelis" name="4; 10.0.4.247 ТК ЛЕНТА - 4 (Бухарестская)"></Server>
+<Server ip="10.0.5.242" database="SES" user="sa" password="vangelis" name="5; 10.0.5.242 ТК ЛЕНТА - 5 (Выборгское ш.)"></Server>
+<Server ip="10.0.6.247" database="SES" user="sa" password="vangelis" name="6; 10.0.6.247 ТК ЛЕНТА - 6 (Таллинское ш.)"></Server>
+<Server ip="10.0.7.248" database="SES" user="sa" password="vangelis" name="7; 10.0.7.248 ТК ЛЕНТА - 7 (Дальневосточный)"></Server>
+<Server ip="10.0.8.245" database="SES" user="sa" password="vangelis" name="8; 10.0.8.245 ТК ЛЕНТА - 8 (Московское ш.)"></Server>
+<Server ip="10.0.9.248" database="SES" user="sa" password="vangelis" name="9; 10.0.9.248 ТК ЛЕНТА - 9 (Уральская)"></Server>
+<Server ip="10.0.10.248" database="SES" user="sa" password="vangelis" name="10; 10.0.10.248 ТК ЛЕНТА - 10 (Обводный канал)"></Server>
+<Server ip="10.0.11.248" database="SES" user="sa" password="vangelis" name="11; 10.0.11.248 ТК ЛЕНТА - 11 (Руставели)"></Server>
+<Server ip="10.0.12.248" database="SES" user="sa" password="vangelis" name="12; 10.0.12.248 ТК ЛЕНТА - 12 (Хасанская)"></Server>
+<Server ip="10.0.14.248" database="SES" user="sa" password="vangelis" name="14; 10.0.14.248 ТК ЛЕНТА - 14 (Великий Новгор)"></Server>
+<Server ip="10.0.15.248" database="SES" user="sa" password="vangelis" name="15; 10.0.15.248 ТК ЛЕНТА - 15 (Парголово)"></Server>
+<Server ip="10.0.16.248" database="SES" user="sa" password="vangelis" name="16; 10.0.16.248 ТК ЛЕНТА - 16 (Петрозаводск)"></Server>
+<Server ip="10.0.17.248" database="SES" user="sa" password="vangelis" name="17; 10.0.17.248 ТК ЛЕНТА - 17"></Server>
+<Server ip="10.0.31.248" database="SES" user="sa" password="vangelis" name="31; 10.0.31.248 ТК ЛЕНТА - 31 (Астрахань)"></Server>
+<Server ip="10.0.32.248" database="SES" user="sa" password="vangelis" name="32; 10.0.32.248 ТК ЛЕНТА - 32 (Волгоград)"></Server>
+<Server ip="10.0.33.248" database="SES" user="sa" password="vangelis" name="33; 10.0.33.248 ТК Лента - 33"></Server>
+<Server ip="10.0.33.248" database="SES" user="sa" password="vangelis" name="34; 10.0.33.248 ТК ЛЕНТА-34"></Server>
+<Server ip="10.0.38.248" database="SES" user="sa" password="vangelis" name="38; 10.0.38.248 ТК ЛЕНТА - 38"></Server>
+<Server ip="10.0.39.248" database="SES" user="sa" password="vangelis" name="39; 10.0.39.248 ТК ЛЕНТА - 39 (Краснодар)"></Server>
+<Server ip="10.0.51.248" database="SES" user="sa" password="vangelis" name="51; 10.0.51.248 ТК ЛЕНТА - 51 (Н. Новгород 1)"></Server>
+<Server ip="10.0.52.248" database="SES" user="sa" password="vangelis" name="52; 10.0.52.248 ТК ЛЕНТА - 52 (Тольятти)"></Server>
+<Server ip="10.0.54.248" database="SES" user="sa" password="vangelis" name="54; 10.0.54.248 ТК ЛЕНТА - 54 (Н. Новгород 2)"></Server>
+<Server ip="10.0.55.248" database="SES" user="sa" password="vangelis" name="55; 10.0.55.248 ТК ЛЕНТА - 55"></Server>
+<Server ip="10.0.59.233" database="SES" user="sa" password="vangelis" name="59; 10.0.59.233 ТК Лента - 59"></Server>
+<Server ip="10.0.63.248" database="SES" user="sa" password="vangelis" name="63; 10.0.63.248 ТК ЛЕНТА - 63(Пенза)"></Server>
+<Server ip="10.0.71.248" database="SES" user="sa" password="vangelis" name="71; 10.0.71.248 ТК ЛЕНТА - 71 (Новосибирск 1)"></Server>
+<Server ip="10.0.72.248" database="SES" user="sa" password="vangelis" name="72; 10.0.72.248 ТК ЛЕНТА - 72 (Новосибирск 2)"></Server>
+<Server ip="10.0.73.248" database="SES" user="sa" password="vangelis" name="73; 10.0.73.248 ТК ЛЕНТА - 73 (Новосибирск 3)"></Server>
+<Server ip="10.0.75.248" database="SES" user="sa" password="vangelis" name="75; 10.0.75.248 ТК ЛЕНТА - 75 (Барнаул)"></Server>
+<Server ip="10.0.76.248" database="SES" user="sa" password="vangelis" name="76; 10.0.76.248 ТК ЛЕНТА - 76 (ОМСК)"></Server>
+<Server ip="10.0.77.248" database="SES" user="sa" password="vangelis" name="77; 10.0.77.248 ТК Лента - 77"></Server>
+<Server ip="10.0.91.248" database="SES" user="sa" password="vangelis" name="91; 10.0.91.248 ТК ЛЕНТА - 91 (Тюмень)"></Server>
+<Server ip="10.0.111.248" database="SES" user="sa" password="vangelis" name="111; 10.0.111.248 ТК ЛЕНТА -111"></Server>
+<Server ip="10.0.63.248" database="SES" user="sa" password="vangelis" name="124; 10.0.63.248 ТК ЛЕНТА - 63 (Пенза)"></Server>
+	</Servers>
+
+</ROOT>

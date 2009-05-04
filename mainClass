@@ -1,0 +1,2 @@
+Main-Class: ru.crystalservice.setquery.MainQuery
+Class-Path: ext/sqljdbc.jar
