@@ -14,9 +14,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -115,7 +113,7 @@ public class MainQuery {
 
 	private class ActStop extends AbstractAction {
 		ActStop() {
-			super("Стоп", null);
+			super("Stop", null);
 		}
 
 		public void actionPerformed(ActionEvent e) {
@@ -132,43 +130,70 @@ public class MainQuery {
 
 		public void actionPerformed(ActionEvent e) {
 			JFileChooser jfc = new JFileChooser();
-			jfc.setDialogTitle("sql-скрипт");
+			jfc.setDialogTitle("Open sql-скрипт");
 			if (jfc.showOpenDialog(frame) == JFileChooser.APPROVE_OPTION) {
 				File f = jfc.getSelectedFile();
-				taCommand.setText("");
 				if (f.exists()) {
-					FileReader fr = null;
-					BufferedReader br = null;
-
 					try {
-						fr = new FileReader(f);
-						br = new BufferedReader(fr);
-						String line = null;
-						while ((line = br.readLine()) != null) {
-							taCommand.append(line + "\n");
-						}
-					} catch (Exception e2) {
-						// TODO: handle exception
-					} finally {
-						try {
-							if (br != null)
-								br.close();
-							if (fr != null)
-								fr.close();
-						} catch (Exception e3) {
-							// TODO: handle exception
-						}
+						taCommand.setText(FileHelper.getContents(f, ""));
+					} catch (Exception e1) {
+						taCommand.setText(e1.getMessage());
 					}
-				}
+				} else
+					taCommand.setText("");
 			}
 		}
 	}
 
 	private ActOpen actOpen = new ActOpen();
+	
+	private class ActSaveScript extends AbstractAction {
+		ActSaveScript() {
+			super("Save...", null);
+		}
+
+		public void actionPerformed(ActionEvent e) {
+			JFileChooser jfc = new JFileChooser();
+			jfc.setDialogTitle("Save sql-script");
+			if (jfc.showSaveDialog(frame) == JFileChooser.APPROVE_OPTION) {
+				File f = jfc.getSelectedFile();
+				try {
+					FileHelper.setContents(f, taCommand.getText(), "");
+				} catch (Exception e1) {
+					
+				}
+
+			}
+		}
+	}
+
+	private ActSaveScript actSaveScript = new ActSaveScript();
+
+	private class ActSaveResult extends AbstractAction {
+		ActSaveResult() {
+			super("Save Result...", null);
+		}
+
+		public void actionPerformed(ActionEvent e) {
+			JFileChooser jfc = new JFileChooser();
+			jfc.setDialogTitle("Save Result");
+			if (jfc.showSaveDialog(frame) == JFileChooser.APPROVE_OPTION) {
+				File f = jfc.getSelectedFile();
+				try {
+					FileHelper.setContents(f, taResult.getText(), "");
+				} catch (Exception e1) {
+					
+				}
+
+			}
+		}
+	}
+
+	private ActSaveResult actSaveResult = new ActSaveResult();
 
 	private class ActRun extends AbstractAction {
 		ActRun() {
-			super("Пуск", null);
+			super("Run", null);
 		}
 
 		public void actionPerformed(ActionEvent e) {
@@ -186,6 +211,7 @@ public class MainQuery {
 	private JTextArea textField = null;
 	private JFrame frame;
 	private List<ServerBD> servers = new ArrayList<ServerBD>();
+	private String currentShop = "";
 
 	/**
 	 * Launch the application
@@ -239,7 +265,7 @@ public class MainQuery {
 	 */
 	private void createContents() {
 		frame = new JFrame();
-		frame.setTitle("SET Query (v.1.5)");
+		frame.setTitle("SET Query (v.1.7)");
 		frame.setSize(new Dimension(700, 500));
 		frame.setLocationRelativeTo(null);
 		frame.setMinimumSize(new Dimension(500, 300));
@@ -278,7 +304,6 @@ public class MainQuery {
 			}
 		});
 
-		
 		taCommand.getActionMap().put("Undo", new AbstractAction("Undo") {
 			public void actionPerformed(ActionEvent evt) {
 				try {
@@ -363,7 +388,7 @@ public class MainQuery {
 
 		final JButton saveButton_1 = new JButton();
 		panel_2.add(saveButton_1);
-		saveButton_1.setText("Save...");
+		saveButton_1.setAction(actSaveScript);
 
 		final JPanel panel_5 = new JPanel();
 		panel_5.setLayout(new GridLayout(0, 1));
@@ -374,6 +399,8 @@ public class MainQuery {
 		panel_5.add(label_1);
 
 		progressBar = new JProgressBar();
+		progressBar.setString("");
+		progressBar.setStringPainted(true);
 		panel_5.add(progressBar);
 
 		tpBottom = new JTabbedPane();
@@ -423,7 +450,7 @@ public class MainQuery {
 		pnResult.add(panel_4, BorderLayout.SOUTH);
 
 		final JButton saveButton = new JButton();
-		saveButton.setText("Save Result...");
+		saveButton.setAction(actSaveResult);
 		panel_4.add(saveButton);
 
 		final JButton clearButton = new JButton();
@@ -497,6 +524,7 @@ public class MainQuery {
 	}
 
 	private void runQuery() {
+		progressBar.setString("");
 		progressBar.setIndeterminate(true);
 		tpBottom.setSelectedComponent(pnResult);
 		actStop.setEnabled(true);
@@ -506,8 +534,9 @@ public class MainQuery {
 		execQuery.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent evt) {
 				if ("progress".equals(evt.getPropertyName())) {
-					progressBar.setIndeterminate(false); 
+					progressBar.setIndeterminate(false);
 					progressBar.setValue((Integer) evt.getNewValue());
+					progressBar.setString(currentShop);
 				}
 			}
 		});
@@ -539,7 +568,8 @@ public class MainQuery {
 
 			for (ServerBD serverBD : selected) {
 				if (!isCancelled()) {
-					setProgress((100 * selected.indexOf(serverBD) + 5 ) / selected.size());
+					currentShop = serverBD.toString();
+					setProgress((100 * selected.indexOf(serverBD) + 5) / selected.size());
 					s = new StringBuilder(sCommand);
 					k = 0;
 					while ((k = s.indexOf("<name>", k)) > 0) {
@@ -590,6 +620,7 @@ public class MainQuery {
 		@Override
 		protected void done() {
 			if (!isCancelled()) {
+				currentShop = "Done!";
 				setProgress(100);
 				stopQuery();
 			}
