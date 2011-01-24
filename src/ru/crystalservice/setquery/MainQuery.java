@@ -54,12 +54,15 @@ public class MainQuery {
 	private JTabbedPane tpBottom;
 	private JPanel pnResult;
 	private Settings pnSettings;
+	
+	private File dir = new File(".");
 
 	private class ActSelectAll extends AbstractAction {
 		ActSelectAll() {
 			super("Выделить все", null);
 		}
 
+		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (textField != null) {
 				textField.selectAll();
@@ -74,6 +77,7 @@ public class MainQuery {
 			super("Вырезать", null);
 		}
 
+		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (textField != null) {
 				textField.cut();
@@ -88,6 +92,7 @@ public class MainQuery {
 			super("Копировать", null);
 		}
 
+		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (textField != null) {
 				textField.copy();
@@ -102,6 +107,7 @@ public class MainQuery {
 			super("Вставить", null);
 		}
 
+		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (textField != null) {
 				textField.paste();
@@ -116,6 +122,7 @@ public class MainQuery {
 			super("Stop", null);
 		}
 
+		@Override
 		public void actionPerformed(ActionEvent e) {
 			stopQuery();
 		}
@@ -128,11 +135,13 @@ public class MainQuery {
 			super("Open...", null);
 		}
 
+		@Override
 		public void actionPerformed(ActionEvent e) {
-			JFileChooser jfc = new JFileChooser();
+			JFileChooser jfc = new JFileChooser(dir);
 			jfc.setDialogTitle("Open sql-скрипт");
 			if (jfc.showOpenDialog(frame) == JFileChooser.APPROVE_OPTION) {
 				File f = jfc.getSelectedFile();
+				dir = f.getParentFile();
 				if (f.exists()) {
 					try {
 						taCommand.setText(FileHelper.getContents(f, ""));
@@ -152,11 +161,13 @@ public class MainQuery {
 			super("Save...", null);
 		}
 
+		@Override
 		public void actionPerformed(ActionEvent e) {
-			JFileChooser jfc = new JFileChooser();
+			JFileChooser jfc = new JFileChooser(dir);
 			jfc.setDialogTitle("Save sql-script");
 			if (jfc.showSaveDialog(frame) == JFileChooser.APPROVE_OPTION) {
 				File f = jfc.getSelectedFile();
+				dir = f.getParentFile();
 				try {
 					FileHelper.setContents(f, taCommand.getText(), "");
 				} catch (Exception e1) {
@@ -174,11 +185,13 @@ public class MainQuery {
 			super("Save Result...", null);
 		}
 
+		@Override
 		public void actionPerformed(ActionEvent e) {
-			JFileChooser jfc = new JFileChooser();
+			JFileChooser jfc = new JFileChooser(dir);
 			jfc.setDialogTitle("Save Result");
 			if (jfc.showSaveDialog(frame) == JFileChooser.APPROVE_OPTION) {
 				File f = jfc.getSelectedFile();
+				dir = f.getParentFile();				
 				try {
 					FileHelper.setContents(f, taResult.getText(), "");
 				} catch (Exception e1) {
@@ -196,6 +209,7 @@ public class MainQuery {
 			super("Run", null);
 		}
 
+		@Override
 		public void actionPerformed(ActionEvent e) {
 			runQuery();
 		}
@@ -225,6 +239,7 @@ public class MainQuery {
 		}
 		Locale.setDefault(new Locale("ru", "RU"));
 		EventQueue.invokeLater(new Runnable() {
+			@Override
 			public void run() {
 				try {
 					MainQuery window = new MainQuery();
@@ -299,12 +314,14 @@ public class MainQuery {
 		// The next two lines should be in one line.
 		doc.addUndoableEditListener(new UndoableEditListener() {
 			// The next two lines should be in one line.
+			@Override
 			public void undoableEditHappened(UndoableEditEvent evt) {
 				undo.addEdit(evt.getEdit());
 			}
 		});
 
 		taCommand.getActionMap().put("Undo", new AbstractAction("Undo") {
+			@Override
 			public void actionPerformed(ActionEvent evt) {
 				try {
 					if (undo.canUndo()) {
@@ -317,6 +334,7 @@ public class MainQuery {
 		taCommand.getInputMap().put(KeyStroke.getKeyStroke("control Z"), "Undo");
 
 		taCommand.getActionMap().put("Redo", new AbstractAction("Redo") {
+			@Override
 			public void actionPerformed(ActionEvent evt) {
 				try {
 					if (undo.canRedo()) {
@@ -329,6 +347,7 @@ public class MainQuery {
 		taCommand.getInputMap().put(KeyStroke.getKeyStroke("control Y"), "Redo");
 
 		taCommand.addMouseListener(new MouseAdapter() {
+			@Override
 			public void mousePressed(final MouseEvent e) {
 				setTextArea(taCommand);
 			}
@@ -415,6 +434,7 @@ public class MainQuery {
 
 		taResult = new JTextArea();
 		taResult.addMouseListener(new MouseAdapter() {
+			@Override
 			public void mousePressed(final MouseEvent e) {
 				setTextArea(taResult);
 			}
@@ -455,6 +475,7 @@ public class MainQuery {
 
 		final JButton clearButton = new JButton();
 		clearButton.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(final ActionEvent e) {
 				taResult.setText("");
 			}
@@ -532,6 +553,7 @@ public class MainQuery {
 		actRun.setEnabled(false);
 		execQuery = new ExecQuery();
 		execQuery.addPropertyChangeListener(new PropertyChangeListener() {
+			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
 				if ("progress".equals(evt.getPropertyName())) {
 					progressBar.setIndeterminate(false);
@@ -635,11 +657,13 @@ public class MainQuery {
 	 */
 	private static void addPopup(Component component, final JPopupMenu popup) {
 		component.addMouseListener(new MouseAdapter() {
+			@Override
 			public void mousePressed(MouseEvent e) {
 				if (e.isPopupTrigger())
 					showMenu(e);
 			}
 
+			@Override
 			public void mouseReleased(MouseEvent e) {
 				if (e.isPopupTrigger())
 					showMenu(e);
