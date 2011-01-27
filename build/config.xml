@@ -5,59 +5,65 @@
 	</Params>
 	
 	<Servers>
-<Server ip="10.1.15.200" database="SES" user="sa" password="mssql" name="10.1.15.200 Москва (ул. Ангелов пер., 7)"></Server>
-<Server ip="10.1.18.200" database="SES" user="sa" password="mssql" name="10.1.18.200 Москва (Отрадное)"></Server>
-<Server ip="10.1.61.200" database="SES" user="sa" password="mssql" name="10.1.61.200 Самара (Парк Хаус)"></Server>
-<Server ip="10.1.70.200" database="SES" user="sa" password="mssql" name="10.1.70.200 Волгоград (Бульвар 30 лет Победы, 21)"></Server>
-<Server ip="10.1.101.200" database="SES" user="sa" password="mssql" name="10.1.101.200 Мытищи (Фуражная)"></Server>
-<Server ip="10.1.102.200" database="SES" user="sa" password="mssql" name="10.1.102.200 Казань (Савиново)"></Server>
-<Server ip="10.1.112.200" database="SES" user="sa" password="mssql" name="10.1.112.200 Казань (Тандем)"></Server>
-<Server ip="10.1.125.200" database="SES" user="sa" password="mssql" name="10.1.125.200 Н.Новгород (Плотникова)"></Server>
-<Server ip="10.1.146.200" database="SES" user="sa" password="mssql" name="10.1.146.200 Набережные Челны (Омега)"></Server>
-<Server ip="10.1.153.200" database="SES" user="sa" password="mssql" name="10.1.153.200 Тюмень (Гудвин)"></Server>
-<Server ip="10.1.156.200" database="SES" user="sa" password="mssql" name="10.1.156.200 Ярославль (Альтаир)"></Server>
-<Server ip="10.1.174.200" database="SES" user="sa" password="mssql" name="10.1.174.200 Липецк (Ул. Катукова, д.11)"></Server>
-<Server ip="10.1.178.200" database="SES" user="sa" password="mssql" name="10.1.178.200 Москва (пр. Андропова д.8 ТЦ Мегаполис)"></Server>
-<Server ip="10.1.181.200" database="SES" user="sa" password="mssql" name="10.1.181.200 Воронеж (Космонавтов)"></Server>
-<Server ip="10.1.187.200" database="SES" user="sa" password="mssql" name="10.1.187.200 Н.Новгород (Красный Якорь)"></Server>
-<Server ip="10.1.202.200" database="SES" user="sa" password="mssql" name="10.1.202.200 Тверь (Коминтерна)"></Server>
-<Server ip="10.1.208.200" database="SES" user="sa" password="mssql" name="10.1.208.200 Санкт-Петербург (ул. Коллонтай)"></Server>
-<Server ip="10.1.209.200" database="SES" user="sa" password="mssql" name="10.1.209.200 Санкт-Петербург (ул. Карбышева)"></Server>
-<Server ip="10.1.210.200" database="SES" user="sa" password="mssql" name="10.1.210.200 Санкт-Петербург (ул. Партизана Германа)"></Server>
-<Server ip="10.1.211.200" database="SES" user="sa" password="mssql" name="10.1.211.200 Бронницы (Каширский переулок, 66)"></Server>
-<Server ip="10.1.212.200" database="SES" user="sa" password="mssql" name="10.1.212.200 Дзержинск (Циолковского пр-т, д. 61)"></Server>
-<Server ip="10.1.213.200" database="SES" user="sa" password="mssql" name="10.1.213.200 Дмитров (Бирлово поле, д. 7)"></Server>
-<Server ip="10.1.214.200" database="SES" user="sa" password="mssql" name="10.1.214.200 Санкт-Петербург (пр. Просвещения)"></Server>
-<Server ip="10.1.215.200" database="SES" user="sa" password="mssql" name="10.1.215.200 Выборг (Ленингр.обл., ул.Госпитальная)"></Server>
-<Server ip="10.1.216.200" database="SES" user="sa" password="mssql" name="10.1.216.200 Санкт-Петербург (Пулковское шоссе)"></Server>
-<Server ip="10.1.217.200" database="SES" user="sa" password="mssql" name="10.1.217.200 Ижевск (Автозаводская 3А)"></Server>
-<Server ip="10.1.218.200" database="SES" user="sa" password="mssql" name="10.1.218.200 Санкт-Петербург (пр. Испытателей (Коломяжский, 17))"></Server>
-<Server ip="10.1.219.200" database="SES" user="sa" password="mssql" name="10.1.219.200 Санкт-Петербург (пр. М. Блюхера)"></Server>
-<Server ip="10.1.220.200" database="SES" user="sa" password="mssql" name="10.1.220.200 Н.Новгород (Московское шоссе, 296 А)"></Server>
-<Server ip="10.1.221.200" database="SES" user="sa" password="mssql" name="10.1.221.200 Домодедово (ул. Краснодарская, д. 2)"></Server>
-<Server ip="10.1.222.200" database="SES" user="sa" password="mssql" name="10.1.222.200 Подольск (Симферопольское шоссе 20А, стр. 1)"></Server>
-<Server ip="10.1.223.200" database="SES" user="sa" password="mssql" name="10.1.223.200 Санкт-Петербург (пр.Большевиков)"></Server>
-<Server ip="10.1.224.200" database="SES" user="sa" password="mssql" name="10.1.224.200 Санкт-Петербург (пр. Руставели 43 А)"></Server>
-<Server ip="10.1.225.200" database="SES" user="sa" password="mssql" name="10.1.225.200 Сосновый Бор (Ленингр.обл., ул.Красных фортов)"></Server>
-<Server ip="10.1.226.200" database="SES" user="sa" password="mssql" name="10.1.226.200 Санкт-Петербург (Савушкина ул., 116 (Приморский район))"></Server>
-<Server ip="10.1.227.200" database="SES" user="sa" password="mssql" name="10.1.227.200 Волгоград (Землячки 110)"></Server>
-<Server ip="10.1.228.200" database="SES" user="sa" password="mssql" name="10.1.228.200 Санкт-Петербург (ул. Бухарестская)"></Server>
-<Server ip="10.1.229.200" database="SES" user="sa" password="mssql" name="10.1.229.200 Санкт-Петербург (пр. М. Жукова (Ленинский пр, 100/1))"></Server>
-<Server ip="10.1.230.200" database="SES" user="sa" password="mssql" name="10.1.230.200 Санкт-Петербург (Кузнецовская, 31 А)"></Server>
-<Server ip="10.1.232.200" database="SES" user="sa" password="mssql" name="10.1.232.200 Ярославль (Малая Пролетарская, 58 (Карабулина))"></Server>
-<Server ip="10.1.233.200" database="SES" user="sa" password="mssql" name="10.1.233.200 Уфа (пр. Октября, д.34)"></Server>
-<Server ip="10.1.235.200" database="SES" user="sa" password="mssql" name="10.1.235.200 Волжский (ул. Александрова, 18а)"></Server>
-<Server ip="10.1.236.200" database="SES" user="sa" password="mssql" name="10.1.236.200 Волгоград (Проспект Ленина, 54Б (SunCity))"></Server>
-<Server ip="10.1.241.200" database="SES" user="sa" password="mssql" name="10.1.241.200 Москва ( м. Войковская, Ленинградское шоссе д.5 ТЦ Метрополис)"></Server>
-<Server ip="10.1.242.200" database="SES" user="sa" password="mssql" name="10.1.242.200 Москва (м. Теплый Стан, Новоясеневский проспект, д.1, ТЦ Спектр)"></Server>
-<Server ip="10.48.32.200" database="SES" user="sa" password="mssql" name="10.48.32.200 Липецк (ул. Гагарина)"></Server>
-<Server ip="10.53.33.200" database="SES" user="sa" password="mssql" name="10.53.33.200 Н.Новгород (Комсомольская площадь, д.2)"></Server>
-<Server ip="10.66.32.200" database="SES" user="sa" password="mssql" name="10.66.32.200 Екатеринбург (ул. Сулимова, д.50)"></Server>
-
-<Server ip="10.1.66.200" database="SES" user="sa" password="mssql" name="10.1.66.200 Химки (Химки)"></Server>
-
-<Server ip="192.168.136.160" database="SES_Centrum" user="sa" password="mssql" name="192.168.136.160 Centrum на 160"></Server>
-
+<Server ip="192.168.254.74" database="SES_Centrum" user="sa" password="mssql" name="-1; 192.168.254.74 Okey - Centrum"></Server>
+<Server ip="192.168.0.233" database="SES" user="sa" password="mssql" name="103; 192.168.0.233 Озерки"></Server>
+<Server ip="192.168.3.233" database="SES" user="sa" password="mssql" name="2047; 192.168.3.233 Жукова"></Server>
+<Server ip="192.168.4.233" database="SES" user="sa" password="mssql" name="2446; 192.168.4.233 Типанова"></Server>
+<Server ip="192.168.5.233" database="SES" user="sa" password="mssql" name="117; 192.168.5.233 Просвещения"></Server>
+<Server ip="192.168.6.233" database="SES" user="sa" password="mssql" name="106; 192.168.6.233 Савушкина (Прим)"></Server>
+<Server ip="192.168.8.233" database="SES" user="sa" password="mssql" name="108; 192.168.8.233 Ладожская"></Server>
+<Server ip="192.168.9.233" database="SES" user="sa" password="mssql" name="109; 192.168.9.233 Богатырский"></Server>
+<Server ip="192.168.10.233" database="SES" user="sa" password="mssql" name="110; 192.168.10.233 Колпино (Тверская)"></Server>
+<Server ip="192.168.11.233" database="SES" user="sa" password="mssql" name="126; 192.168.11.233 СМ Савушкина"></Server>
+<Server ip="192.168.13.233" database="SES" user="sa" password="mssql" name="127; 192.168.13.233 Красное село"></Server>
+<Server ip="192.168.14.233" database="SES" user="sa" password="mssql" name="130; 192.168.14.233 Красноярск"></Server>
+<Server ip="192.168.16.233" database="SES" user="sa" password="mssql" name="107; 192.168.16.233 Ростов1 (Комарова)"></Server>
+<Server ip="192.168.17.233" database="SES" user="sa" password="mssql" name="111; 192.168.17.233 Рыбацкое"></Server>
+<Server ip="192.168.18.233" database="SES" user="sa" password="mssql" name="118; 192.168.18.233 Краснодар1 (Минская)"></Server>
+<Server ip="192.168.19.233" database="SES" user="sa" password="mssql" name="113; 192.168.19.233 Большевиков"></Server>
+<Server ip="192.168.20.233" database="SES" user="sa" password="mssql" name="114; 192.168.20.233 Электросила"></Server>
+<Server ip="192.168.21.233" database="SES" user="sa" password="mssql" name="116; 192.168.21.233 Выборгское"></Server>
+<Server ip="192.168.22.233" database="SES" user="sa" password="mssql" name="115; 192.168.22.233 Пулковское"></Server>
+<Server ip="192.168.23.233" database="SES" user="sa" password="mssql" name="120; 192.168.23.233 Ленская"></Server>
+<Server ip="192.168.24.233" database="SES" user="sa" password="mssql" name="122; 192.168.24.233 Наставников"></Server>
+<Server ip="192.168.25.233" database="SES" user="sa" password="mssql" name="129; 192.168.25.233 Индустриальный"></Server>
+<Server ip="192.168.26.233" database="SES" user="sa" password="mssql" name="131; 192.168.26.233 Сизова (Испытателей)"></Server>
+<Server ip="192.168.27.233" database="SES" user="sa" password="mssql" name="133; 192.168.27.233 Подвойского (Солидарности)"></Server>
+<Server ip="192.168.28.233" database="SES" user="sa" password="mssql" name="135; 192.168.28.233 Мурманск2 (Кольский)"></Server>
+<Server ip="192.168.29.233" database="SES" user="sa" password="mssql" name="137; 192.168.29.233 Волгоград (Диамант)"></Server>
+<Server ip="192.168.31.233" database="SES" user="sa" password="mssql" name="112; 192.168.31.233 Тольятти"></Server>
+<Server ip="192.168.32.233" database="SES" user="sa" password="mssql" name="121; 192.168.32.233 Ростов2 (Малиновского)"></Server>
+<Server ip="192.168.33.233" database="SES" user="sa" password="mssql" name="125; 192.168.33.233 М.Балканская"></Server>
+<Server ip="192.168.34.233" database="SES" user="sa" password="mssql" name="136; 192.168.34.233 Волгоград (Пирамида)"></Server>
+<Server ip="192.168.35.233" database="SES" user="sa" password="mssql" name="119; 192.168.35.233 Краснодар2 (Мачуги)"></Server>
+<Server ip="192.168.36.233" database="SES" user="sa" password="mssql" name="128; 192.168.36.233 Сестрорецк"></Server>
+<Server ip="192.168.37.233" database="SES" user="sa" password="mssql" name="140; 192.168.37.233 Волгоград (Ворошиловский)"></Server>
+<Server ip="192.168.39.233" database="SES" user="sa" password="mssql" name="139; 192.168.39.233 Нижний Новгород"></Server>
+<Server ip="192.168.40.233" database="SES" user="sa" password="mssql" name="123; 192.168.40.233 Щербакова"></Server>
+<Server ip="192.168.41.233" database="SES" user="sa" password="mssql" name="124; 192.168.41.233 Планерная"></Server>
+<Server ip="192.168.43.233" database="SES" user="sa" password="mssql" name="138; 192.168.43.233 Кингисепп (Октябрьская)"></Server>
+<Server ip="192.168.44.233" database="SES" user="sa" password="mssql" name="141; 192.168.44.233 Волгоград (Волжский)"></Server>
+<Server ip="192.168.45.233" database="SES" user="sa" password="mssql" name="143; 192.168.45.233 СМ Ставрополь"></Server>
+<Server ip="192.168.46.233" database="SES" user="sa" password="mssql" name="132; 192.168.46.233 Мурманск"></Server>
+<Server ip="192.168.47.233" database="SES" user="sa" password="mssql" name="142; 192.168.47.233 СМ Красноярск"></Server>
+<Server ip="192.168.48.233" database="SES" user="sa" password="mssql" name="144; 192.168.48.233 Искровский"></Server>
+<Server ip="192.168.49.233" database="SES" user="sa" password="mssql" name="145; 192.168.49.233 Ногинск"></Server>
+<Server ip="192.168.50.233" database="SES" user="sa" password="mssql" name="147; 192.168.50.233 Красноярск 2"></Server>
+<Server ip="192.168.51.233" database="SES" user="sa" password="mssql" name="146; 192.168.51.233 Гранд Каньон"></Server>
+<Server ip="192.168.52.233" database="SES" user="sa" password="mssql" name="148; 192.168.52.233 Москва Ростокино"></Server>
+<Server ip="192.168.55.233" database="SES" user="sa" password="mssql" name="149; 192.168.55.233 Москва Лобня"></Server>
+<Server ip="192.168.58.233" database="SES" user="sa" password="mssql" name="151; 192.168.58.233 СМ Новочеркасск"></Server>
+<Server ip="192.168.61.233" database="SES" user="sa" password="mssql" name="150; 192.168.61.233 Уфа 1"></Server>
+<Server ip="192.168.62.233" database="SES" user="sa" password="mssql" name="153; 192.168.62.233 Липецк"></Server>
+<Server ip="192.168.64.233" database="SES" user="sa" password="mssql" name="152; 192.168.64.233 СМ Крыленко"></Server>
+<Server ip="192.168.66.233" database="SES" user="sa" password="mssql" name="154; 192.168.66.233 Краснодар 3 (OZ)"></Server>
+<Server ip="192.168.68.233" database="SES" user="sa" password="mssql" name="155; 192.168.68.233 ГМ Краснодар 4"></Server>
+<Server ip="192.168.70.233" database="SES" user="sa" password="mssql" name="156; 192.168.70.233 ГМ Колпино"></Server>
+<Server ip="192.168.72.233" database="SES" user="sa" password="mssql" name="158; 192.168.72.233 ГМ Астрахань (ул. Боевая)"></Server>
+<Server ip="192.168.74.233" database="SES" user="sa" password="mssql" name="157; 192.168.74.233 ГМ Воронеж"></Server>
+<Server ip="192.168.76.233" database="SES" user="sa" password="mssql" name="160; 192.168.76.233 СМ Ленинский проспект"></Server>
+<Server ip="192.168.77.233" database="SES" user="sa" password="mssql" name="159; 192.168.77.233 СМ Лиговский"></Server>
+<Server ip="192.168.78.233" database="SES" user="sa" password="mssql" name="161; 192.168.78.233 СМ Краснодар Босс Хаус"></Server>
 
 	</Servers>
 
