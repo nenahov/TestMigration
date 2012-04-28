@@ -59,7 +59,7 @@ public class MainQuery {
 
 	private class ActSelectAll extends AbstractAction {
 		ActSelectAll() {
-			super("Выделить все", null);
+			super("Р’С‹РґРµР»РёС‚СЊ РІСЃРµ", null);
 		}
 
 		@Override
@@ -74,7 +74,7 @@ public class MainQuery {
 
 	private class ActCutText extends AbstractAction {
 		ActCutText() {
-			super("Вырезать", null);
+			super("Р’С‹СЂРµР·Р°С‚СЊ", null);
 		}
 
 		@Override
@@ -89,7 +89,7 @@ public class MainQuery {
 
 	private class ActCopyText extends AbstractAction {
 		ActCopyText() {
-			super("Копировать", null);
+			super("РљРѕРїРёСЂРѕРІР°С‚СЊ", null);
 		}
 
 		@Override
@@ -104,7 +104,7 @@ public class MainQuery {
 
 	private class ActPasteText extends AbstractAction {
 		ActPasteText() {
-			super("Вставить", null);
+			super("Р’СЃС‚Р°РІРёС‚СЊ", null);
 		}
 
 		@Override
@@ -138,7 +138,7 @@ public class MainQuery {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			JFileChooser jfc = new JFileChooser(dir);
-			jfc.setDialogTitle("Open sql-скрипт");
+			jfc.setDialogTitle("Open sql-СЃРєСЂРёРїС‚");
 			if (jfc.showOpenDialog(frame) == JFileChooser.APPROVE_OPTION) {
 				File f = jfc.getSelectedFile();
 				dir = f.getParentFile();
@@ -414,7 +414,7 @@ public class MainQuery {
 		panel.add(panel_5, BorderLayout.SOUTH);
 
 		final JLabel label_1 = new JLabel();
-		label_1.setText("<name> => 'имя магазина'; <ip> => 'ip-адрес'");
+		label_1.setText("<name> => 'РёРјСЏ РјР°РіР°Р·РёРЅР°'; <ip> => 'ip-Р°РґСЂРµСЃ'");
 		panel_5.add(label_1);
 
 		progressBar = new JProgressBar();
@@ -427,7 +427,7 @@ public class MainQuery {
 
 		pnResult = new JPanel();
 		pnResult.setLayout(new BorderLayout());
-		tpBottom.addTab("Результат", null, pnResult, null);
+		tpBottom.addTab("Р РµР·СѓР»СЊС‚Р°С‚", null, pnResult, null);
 
 		final JScrollPane scrollPane_2 = new JScrollPane();
 		pnResult.add(scrollPane_2, BorderLayout.CENTER);
@@ -484,7 +484,7 @@ public class MainQuery {
 		panel_4.add(clearButton);
 
 		pnSettings = new Settings();
-		tpBottom.addTab("Настройки", null, pnSettings, null);
+		tpBottom.addTab("РќР°СЃС‚СЂРѕР№РєРё", null, pnSettings, null);
 
 		final JPanel panel_3 = new JPanel();
 		panel_3.setLayout(new BorderLayout());
@@ -495,7 +495,7 @@ public class MainQuery {
 		panel_3.add(panel_6, BorderLayout.NORTH);
 
 		final JLabel label = new JLabel();
-		label.setText("Список БД");
+		label.setText("РЎРїРёСЃРѕРє Р‘Р”");
 		panel_6.add(label);
 
 		final JPanel panel_7 = new JPanel();
@@ -540,7 +540,7 @@ public class MainQuery {
 			}
 			list.updateUI();
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(frame, e.getMessage(), "Список серверов", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame, e.getMessage(), "РЎРїРёСЃРѕРє СЃРµСЂРІРµСЂРѕРІ", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 

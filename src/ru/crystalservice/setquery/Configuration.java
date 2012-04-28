@@ -43,7 +43,7 @@ public class Configuration {
 				return null;
 			}
 		} catch (Exception e) {
-			throw new ConfigurationException("Ошибка чтения настроек из файла config.xml", e);
+			throw new ConfigurationException("РћС€РёР±РєР° С‡С‚РµРЅРёСЏ РЅР°СЃС‚СЂРѕРµРє РёР· С„Р°Р№Р»Р° config.xml", e);
 		}
 	}
 

@@ -72,8 +72,8 @@ public class Informer {
 			DriverManager.setLoginTimeout(5);
 			conn = DriverManager.getConnection(prop.getProperty("jdbcUrl"), properties);
 		} catch (Exception e) {
-			// TODO вывод сообщения об ошибке
-			showError("Подключение к БД", e);
+			// TODO РІС‹РІРѕРґ СЃРѕРѕР±С‰РµРЅРёСЏ РѕР± РѕС€РёР±РєРµ
+			showError("РџРѕРґРєР»СЋС‡РµРЅРёРµ Рє Р‘Р”", e);
 			throw e;
 		}
 	}
@@ -140,7 +140,7 @@ public class Informer {
 	private synchronized void fillList(String cmdCommand) {
 		try {
 			connect();
-			// заполнение списка
+			// Р·Р°РїРѕР»РЅРµРЅРёРµ СЃРїРёСЃРєР°
 			String sGo = "\nGO\n" + cmdCommand.toUpperCase() + "\nGO\n";
 			cmdCommand = cmdCommand + "\n";
 			int k1 = sGo.indexOf("\nGO\n");
@@ -155,7 +155,7 @@ public class Informer {
 					try {
 						cs.execute();
 					} catch (Exception e) {
-						showError("Ошибка", e);
+						showError("РћС€РёР±РєР°", e);
 						cs.getMoreResults();
 					}
 
@@ -167,7 +167,7 @@ public class Informer {
 				}
 			}
 		} catch (Exception e) {
-			showError("Ошибка", e);
+			showError("РћС€РёР±РєР°", e);
 		} finally {
 			disconnect();
 		}

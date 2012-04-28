@@ -12,15 +12,15 @@ public class ServerBD {
 	private String user;
 	private String password;
 
-	public ServerBD(String name, String url, String ip, String database, String user, String password) {
-		super();
-		this.name = name;
-		this.url = url;
-		this.ip = ip;
-		this.database = database;
-		this.user = user;
-		this.password = password;
-	}
+//	private ServerBD(String name, String url, String ip, String database, String user, String password) {
+//		super();
+//		this.name = name;
+//		this.url = url;
+//		this.ip = ip;
+//		this.database = database;
+//		this.user = user;
+//		this.password = password;
+//	}
 
 	public ServerBD(Element element) {
 		name = element.getAttribute("name");
@@ -28,6 +28,9 @@ public class ServerBD {
 		database = element.getAttribute("database");
 		user = element.getAttribute("user");
 		password = element.getAttribute("password");
+		if (password == null) {
+			password = PasswordCoder.decodePassword( element.getAttribute("cryptpassword"));
+		}
 		url = element.getAttribute("url");
 		if ((url == null) || (url.trim().equals(""))) {
 			url = "jdbc:sqlserver://" + ip + ";databasename=" + database;

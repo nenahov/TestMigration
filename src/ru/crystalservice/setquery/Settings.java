@@ -26,24 +26,24 @@ public class Settings extends JPanel {
 		setLayout(new BorderLayout());
 
 		final JPanel panel = new JPanel();
-		panel.setBorder(new TitledBorder(null, "Символом-разделителем является:", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, null, null));
+		panel.setBorder(new TitledBorder(null, "РЎРёРјРІРѕР»РѕРј-СЂР°Р·РґРµР»РёС‚РµР»РµРј СЏРІР»СЏРµС‚СЃСЏ:", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, null, null));
 		panel.setLayout(new GridLayout(0, 2));
 		add(panel, BorderLayout.NORTH);
 
 		cbTz = new JCheckBox();
 		buttonGroup.add(cbTz);
-		cbTz.setText("точка с запятой");
+		cbTz.setText("С‚РѕС‡РєР° СЃ Р·Р°РїСЏС‚РѕР№");
 		panel.add(cbTz);
 
 		cbTab = new JCheckBox();
 		cbTab.setSelected(true);
 		buttonGroup.add(cbTab);
 		panel.add(cbTab);
-		cbTab.setText("знак табуляции");
+		cbTab.setText("Р·РЅР°Рє С‚Р°Р±СѓР»СЏС†РёРё");
 
 		cbOther = new JCheckBox();
 		buttonGroup.add(cbOther);
-		cbOther.setText("другой:");
+		cbOther.setText("РґСЂСѓРіРѕР№:");
 		panel.add(cbOther);
 
 		edOther = new JTextField();
