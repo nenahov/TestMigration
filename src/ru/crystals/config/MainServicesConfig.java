@@ -38,6 +38,7 @@ import ru.crystals.configuration.Settings;
 import ru.crystals.configuration.SettingsValues;
 import ru.crystals.loyalty.MainLoyalty;
 import ru.crystals.printlabel.MainPrintLabel;
+import ru.crystals.scales.MainScales;
 import ru.crystals.scheduler.MainScheduler;
 import ru.crystals.transport.MainExchanger;
 
@@ -246,6 +247,8 @@ public class MainServicesConfig {
                         pnParent.add(new MainExchanger());
                     } else if (dirName.contains("setreport")) {
                         pnParent.add(new MainExchanger("-1"));
+                    } else if (dirName.contains("scale")) {
+                        pnParent.add(new MainScales());
                     } else if (dirName.contains("printlabel")) {
                         pnParent.add(new MainPrintLabel());
                     } else if (dirName.contains("scheduler") || dirName.contains("dbservice")) {

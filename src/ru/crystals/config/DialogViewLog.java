@@ -5,6 +5,10 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.dnd.DnDConstants;
+import java.awt.dnd.DropTarget;
+import java.awt.dnd.DropTargetDropEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
@@ -13,21 +17,29 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JDialog;
+import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.SwingConstants;
 import javax.swing.SwingWorker;
 import javax.swing.WindowConstants;
 import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultHighlighter;
@@ -46,7 +58,7 @@ public class DialogViewLog extends JDialog {
     private static StyleContext cont = StyleContext.getDefaultStyleContext();
     private static AttributeSet attrRed = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.RED);
     private static AttributeSet attrRedDark = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.RED.darker());
-    private static AttributeSet attrORANGE = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.ORANGE.darker());
+    private static AttributeSet attrORANGE = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.ORANGE.darker().darker());
     private static AttributeSet attrBlue = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.BLUE.darker());
     private static AttributeSet attrBlack = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.BLACK);
 
@@ -59,7 +71,7 @@ public class DialogViewLog extends JDialog {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/res/ico.png")));
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setSize(new Dimension(800, 500));
-        setModal(true);
+        // setModal(true);
         setLocationRelativeTo(parent);
 
         setTitle("Просмотр лога");
@@ -85,6 +97,24 @@ public class DialogViewLog extends JDialog {
         doc = textPane.getStyledDocument();
 
         scrollPane.setViewportView(textPane);
+        textPane.setDropTarget(new DropTarget() {
+
+            private static final long serialVersionUID = 1L;
+
+            @Override
+            public synchronized void drop(DropTargetDropEvent evt) {
+                try {
+                    evt.acceptDrop(DnDConstants.ACTION_COPY);
+                    List<File> droppedFiles = (List<File>) evt.getTransferable().getTransferData(DataFlavor.javaFileListFlavor);
+                    if (droppedFiles.size() > 0) {
+                        setFile(droppedFiles.get(0));
+                    }
+                } catch (Exception ex) {
+                    //
+                    ex.printStackTrace();
+                }
+            }
+        });
 
         JPanel panel = new JPanel();
         getContentPane().add(panel, BorderLayout.SOUTH);
@@ -97,6 +127,22 @@ public class DialogViewLog extends JDialog {
                 highlight(searchHighlightPainter, edSearch.getText());
             }
         });
+
+        final JCheckBox chAlwaysOnTop = new JCheckBox("Поверх всех окон");
+        chAlwaysOnTop.setSelected(true);
+        chAlwaysOnTop.addChangeListener(new ChangeListener() {
+
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                setAlwaysOnTop(chAlwaysOnTop.isSelected());
+            }
+        });
+        panel.add(chAlwaysOnTop);
+
+        JSeparator separator = new JSeparator();
+        separator.setOrientation(SwingConstants.VERTICAL);
+        separator.setPreferredSize(new Dimension(3, 21));
+        panel.add(separator);
         panel.add(edSearch);
         edSearch.setColumns(20);
 
@@ -110,18 +156,35 @@ public class DialogViewLog extends JDialog {
             }
         });
         panel.add(btnNewButton);
+
+        JPanel panel_1 = new JPanel();
+        getContentPane().add(panel_1, BorderLayout.NORTH);
+        panel_1.setLayout(new BorderLayout(0, 0));
+
+        edFileName = new JTextField();
+        edFileName.setEditable(false);
+        panel_1.add(edFileName, BorderLayout.CENTER);
+        edFileName.setColumns(10);
+
+        JButton button = new JButton();
+        button.setIcon(new ImageIcon(CdbField.class.getResource("/res/Folder.png")));
+        button.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser fc = new JFileChooser(edFileName.getText().isEmpty() ? "." : edFileName.getText());
+                setAlwaysOnTop(false);
+                fc.addChoosableFileFilter(new FileNameExtensionFilter("Файлы лога", "log"));
+                if (fc.showOpenDialog(getParent()) == JFileChooser.APPROVE_OPTION) {
+                    setFile(fc.getSelectedFile());
+                }
+                setAlwaysOnTop(chAlwaysOnTop.isSelected());
+            }
+        });
+        panel_1.add(button, BorderLayout.EAST);
         final LogWorker worker = new LogWorker();
         worker.execute();
-        if (file.exists()) {
-            try {
-                limit = Math.max(file.length() - 10000, file.length() / 10);
-                bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(file), "windows-1251"));
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-        }
+        setFile(file);
         setAlwaysOnTop(true);
         addWindowListener(new WindowListener() {
 
@@ -162,6 +225,29 @@ public class DialogViewLog extends JDialog {
         });
 
     }
+
+    protected void setFile(File file) {
+        if (bufferedReader != null) {
+            try {
+                bufferedReader.close();
+            } catch (IOException e) {
+                //
+            }
+            bufferedReader = null;
+        }
+        edFileName.setText(file.getAbsolutePath());
+        textPane.setText("");
+        if (file.exists()) {
+            try {
+                limit = Math.max(file.length() - 5000, 0);
+                bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(file), "windows-1251"));
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+    }
     private HighlightWorker selWorker = null;
 
     protected void highlight(MyHighlightPainter painter, String pattern) {
@@ -186,7 +272,7 @@ public class DialogViewLog extends JDialog {
                         publish(line);
                     } else {
                         Thread.sleep(10);
-                        limit = 0;
+                        // limit = 0;
                     }
                 } else {
                     Thread.sleep(1000);
@@ -208,7 +294,7 @@ public class DialogViewLog extends JDialog {
                                 attr = attrBlue;
                             } else if (lll.contains("trace:") || lll.contains("debug:")) {
                                 attr = attrBlack;
-                            } else if (lll.contains("warn:")) {
+                            } else if (lll.contains("warn :")) {
                                 attr = attrORANGE;
                             } else if (lll.contains("error:")) {
                                 attr = attrRed;
@@ -295,9 +381,10 @@ public class DialogViewLog extends JDialog {
 
     }
     // An instance of the private subclass of the default highlight painter
-    private MyHighlightPainter selectHighlightPainter = new MyHighlightPainter(Color.YELLOW.darker());
+    private MyHighlightPainter selectHighlightPainter = new MyHighlightPainter(Color.GREEN);
     private MyHighlightPainter searchHighlightPainter = new MyHighlightPainter(Color.YELLOW);
     private JTextField edSearch;
+    private JTextField edFileName;
 
     // A private subclass of the default highlight painter
     class MyHighlightPainter extends DefaultHighlighter.DefaultHighlightPainter {

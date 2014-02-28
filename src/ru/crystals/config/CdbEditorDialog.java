@@ -232,6 +232,7 @@ public class CdbEditorDialog extends JDialog {
             cbDBName.setSelectedItem(db);
             cbDBName.revalidate();
             cbDBName.repaint();
+            cbDBName.showPopup();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Ошибка", JOptionPane.ERROR_MESSAGE);
         }

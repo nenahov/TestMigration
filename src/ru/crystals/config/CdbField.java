@@ -39,7 +39,7 @@ public class CdbField extends JPanel {
         add(textField);
         textField.setColumns(10);
 
-        JButton button = new JButton("");
+        JButton button = new JButton();
         button.setIcon(new ImageIcon(CdbField.class.getResource("/res/Folder.png")));
         button.addActionListener(new ActionListener() {
 
