@@ -22,9 +22,11 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JPanel;
@@ -137,6 +139,24 @@ public class DialogViewLog extends JDialog {
                 setAlwaysOnTop(chAlwaysOnTop.isSelected());
             }
         });
+
+        cbEncoding = new JComboBox();
+        cbEncoding.setModel(new DefaultComboBoxModel(new String[] {"windows-1251", "utf-8", "cp866"}));
+        cbEncoding.setSelectedIndex(0);
+        cbEncoding.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setFile(new File(edFileName.getText()));
+            }
+        });
+
+        panel.add(cbEncoding);
+
+        JSeparator separator_1 = new JSeparator();
+        separator_1.setPreferredSize(new Dimension(3, 21));
+        separator_1.setOrientation(SwingConstants.VERTICAL);
+        panel.add(separator_1);
         panel.add(chAlwaysOnTop);
 
         JSeparator separator = new JSeparator();
@@ -184,7 +204,7 @@ public class DialogViewLog extends JDialog {
         panel_1.add(button, BorderLayout.EAST);
         final LogWorker worker = new LogWorker();
         worker.execute();
-        setFile(file);
+
         setAlwaysOnTop(true);
         addWindowListener(new WindowListener() {
 
@@ -223,7 +243,7 @@ public class DialogViewLog extends JDialog {
                 //
             }
         });
-
+        setFile(file);
     }
 
     protected void setFile(File file) {
@@ -231,7 +251,7 @@ public class DialogViewLog extends JDialog {
             try {
                 bufferedReader.close();
             } catch (IOException e) {
-                //
+                e.printStackTrace();
             }
             bufferedReader = null;
         }
@@ -240,7 +260,7 @@ public class DialogViewLog extends JDialog {
         if (file.exists()) {
             try {
                 limit = Math.max(file.length() - 5000, 0);
-                bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(file), "windows-1251"));
+                bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(file), (String) cbEncoding.getSelectedItem()));
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             } catch (FileNotFoundException e) {
@@ -287,6 +307,9 @@ public class DialogViewLog extends JDialog {
             if (chunks != null) {
                 for (String line : chunks) {
                     limit = limit - line.length() - 2;
+                    if (cbEncoding.getSelectedIndex() == 1) {
+                        limit = limit - line.length() - 2;
+                    }
                     if (limit <= 0) {
                         try {
                             String lll = line.toLowerCase();
@@ -385,6 +408,7 @@ public class DialogViewLog extends JDialog {
     private MyHighlightPainter searchHighlightPainter = new MyHighlightPainter(Color.YELLOW);
     private JTextField edSearch;
     private JTextField edFileName;
+    private JComboBox cbEncoding;
 
     // A private subclass of the default highlight painter
     class MyHighlightPainter extends DefaultHighlighter.DefaultHighlightPainter {
