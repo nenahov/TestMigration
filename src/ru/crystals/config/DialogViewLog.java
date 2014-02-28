@@ -17,6 +17,7 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -100,6 +101,7 @@ public class DialogViewLog extends JDialog {
         edSearch.setColumns(20);
 
         JButton btnNewButton = new JButton("Выделить в тексте");
+        btnNewButton.setIcon(new ImageIcon(DialogViewLog.class.getResource("/res/Search.png")));
         btnNewButton.addActionListener(new ActionListener() {
 
             @Override

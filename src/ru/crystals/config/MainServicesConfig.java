@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.AbstractListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JList;
@@ -84,7 +85,7 @@ public class MainServicesConfig {
         frame = new JFrame();
         frame.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/res/ico.png")));
         frame.setSize(new Dimension(800, 500));
-        frame.setTitle("Конфигурация служб (Build id: 27.02.2014)");
+        frame.setTitle("Конфигурация служб (Build id: 28.02.2014)");
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -127,6 +128,7 @@ public class MainServicesConfig {
         pnMain.add(panel, BorderLayout.SOUTH);
 
         btnSave = new JButton("Save config");
+        btnSave.setIcon(new ImageIcon(MainServicesConfig.class.getResource("/res/Save.png")));
         btnSave.setEnabled(false);
         btnSave.addActionListener(new ActionListener() {
 

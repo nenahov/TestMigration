@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -38,7 +39,8 @@ public class CdbField extends JPanel {
         add(textField);
         textField.setColumns(10);
 
-        JButton button = new JButton("...");
+        JButton button = new JButton("");
+        button.setIcon(new ImageIcon(CdbField.class.getResource("/res/Folder.png")));
         button.addActionListener(new ActionListener() {
 
             @Override

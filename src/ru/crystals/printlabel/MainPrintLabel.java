@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -57,7 +58,8 @@ public class MainPrintLabel extends JPanel {
             SettingsValues.add(edLabelsPath, btDefault, "LabelsPath", "C:\\SET\\Crystal\\TRF");
         }
         {
-            JButton btnSelectPath = new JButton("...");
+            JButton btnSelectPath = new JButton("");
+            btnSelectPath.setIcon(new ImageIcon(MainPrintLabel.class.getResource("/res/Folder.png")));
             btnSelectPath.addActionListener(new ActionListener() {
 
                 @Override

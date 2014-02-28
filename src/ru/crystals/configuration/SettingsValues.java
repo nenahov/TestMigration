@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -65,8 +66,9 @@ public abstract class SettingsValues<T extends JComponent> {
         }
     }
 
-    protected void setBtnDefault(JButton btnDefault) {
-        btnDefault.setText("default");
+    private void setBtnDefault(JButton btnDefault) {
+        btnDefault.setText("Default");
+        btnDefault.setIcon(new ImageIcon(SettingsValues.class.getResource("/res/Default.png")));
         btnDefault.addActionListener(new ActionListener() {
 
             @Override

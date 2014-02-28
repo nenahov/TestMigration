@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -35,7 +36,8 @@ public class PanelService extends JPanel {
         add(edServiceName);
         edServiceName.setColumns(20);
 
-        btnStart = new JButton("Start");
+        btnStart = new JButton("");
+        btnStart.setIcon(new ImageIcon(PanelService.class.getResource("/res/Start.png")));
         btnStart.addActionListener(new ActionListener() {
 
             @Override
@@ -54,7 +56,8 @@ public class PanelService extends JPanel {
         btnStart.setEnabled(false);
         add(btnStart);
 
-        btnStop = new JButton("Stop");
+        btnStop = new JButton("");
+        btnStop.setIcon(new ImageIcon(PanelService.class.getResource("/res/Stop.png")));
         btnStop.addActionListener(new ActionListener() {
 
             @Override
