@@ -63,8 +63,13 @@ public class MainScales extends JPanel {
             tabbedPane.addTab("TOLEDO TIGER", null, pn, null);
         }
 
-        JPanel pnOther = new PanelOther();
-        tabbedPane.addTab("Остальные", null, pnOther, null);
+        {
+            JPanel pnOther = new PanelOther();
+            tabbedPane.addTab("Остальные", null, pnOther, null);
+        }
+        {
+            JPanel pn = new PanelSample();
+            tabbedPane.addTab("Описание настроек", null, pn, null);
+        }
     }
-
 }

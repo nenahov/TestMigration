@@ -32,6 +32,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import ru.crystals.bridge.MainBridge;
+import ru.crystals.cashagent.MainCashAgent;
 import ru.crystals.cashserver.MainCashServer;
 import ru.crystals.configuration.ExchangeProperties;
 import ru.crystals.configuration.Settings;
@@ -43,6 +44,8 @@ import ru.crystals.scheduler.MainScheduler;
 import ru.crystals.transport.MainExchanger;
 
 public class MainServicesConfig {
+
+    private static final String buildId = "11.03.2014";
 
     private static final String LAF = "Windows";
 
@@ -86,7 +89,7 @@ public class MainServicesConfig {
         frame = new JFrame();
         frame.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/res/ico.png")));
         frame.setSize(new Dimension(800, 500));
-        frame.setTitle("Конфигурация служб (Build id: 28.02.2014)");
+        frame.setTitle("Конфигурация служб (Build id: " + buildId + ")");
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -239,6 +242,8 @@ public class MainServicesConfig {
                     Settings.Instance.loadProperties(conf, encoding);
                     if (dirName.contains("loyalty")) {
                         pnParent.add(new MainLoyalty());
+                    } else if (dirName.contains("cashagent")) {
+                        pnParent.add(new MainCashAgent());
                     } else if (dirName.contains("cashserver")) {
                         pnParent.add(new MainCashServer());
                     } else if (dirName.contains("setbridge")) {

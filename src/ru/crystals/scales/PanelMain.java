@@ -1,6 +1,5 @@
 package ru.crystals.scales;
 
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -14,7 +13,6 @@ import ru.crystals.configuration.SettingsValues;
 class PanelMain extends JPanel {
 
     private static final long serialVersionUID = 1L;
-    private final ButtonGroup buttonGroup = new ButtonGroup();
 
     public PanelMain() {
         setLayout(new MigLayout("", "[][grow][]", "[][][][][][][]"));
@@ -27,7 +25,6 @@ class PanelMain extends JPanel {
             add(btDefault, "cell 2 0");
             SettingsValues.add(edHaspRemoteHost, btDefault, "HaspRemoteHost", "127.0.0.1");
         }
-
         JSeparator separator = new JSeparator();
         add(separator, "cell 0 1 3 1,grow");
         {

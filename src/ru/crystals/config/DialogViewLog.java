@@ -27,8 +27,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
-import javax.swing.JDialog;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
@@ -52,7 +52,7 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
 
-public class DialogViewLog extends JDialog {
+public class DialogViewLog extends JFrame {
 
     private static final long serialVersionUID = 1L;
 
@@ -73,7 +73,6 @@ public class DialogViewLog extends JDialog {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/res/ico.png")));
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setSize(new Dimension(800, 500));
-        // setModal(true);
         setLocationRelativeTo(parent);
 
         setTitle("Просмотр лога");
@@ -103,6 +102,7 @@ public class DialogViewLog extends JDialog {
 
             private static final long serialVersionUID = 1L;
 
+            @SuppressWarnings("unchecked")
             @Override
             public synchronized void drop(DropTargetDropEvent evt) {
                 try {
