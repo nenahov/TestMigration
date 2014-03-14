@@ -1,6 +1,7 @@
 package ru.crystals.loyalty;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -15,7 +16,7 @@ class PanelComarch extends JPanel {
     private static final long serialVersionUID = 1L;
 
     public PanelComarch() {
-        setLayout(new MigLayout("", "[][grow][]", "[][][][][][][grow]"));
+        setLayout(new MigLayout("", "[][grow][]", "[][][][][][][][grow]"));
 
         JLabel lblWsUrl = new JLabel("Адрес веб-сервиса:");
         add(lblWsUrl, "cell 0 0,alignx trailing");
@@ -85,10 +86,17 @@ class PanelComarch extends JPanel {
         SettingsValues.add(edIssuance, b5, "Comarch.prefixAllowIssuance", "7789001, 7789002, 7789005, 7789006, 7789007, 7789008");
         SettingsValues.add(edRedemption, b6, "Comarch.prefixAllowRedemption", "7789001, 7789002, 7789005, 7789006, 7789007, 7789008");
 
+        JLabel lblNewLabel = new JLabel("Двойной слип для соц. карт:");
+        add(lblNewLabel, "cell 0 6,alignx trailing");
+
+        JCheckBox chSocCardDoubleSlip = new JCheckBox("");
+        add(chSocCardDoubleSlip, "cell 1 6");
+        SettingsValues.add(chSocCardDoubleSlip, "Comarch.SocCardDoubleSlip", false);
+
         // comarch.prefixerror195=7789001, 7789002
         // comarch.prefixerror194=7789005, 7789006, 7789007, 7789008
 
         JPanel panel = new PanelOther("Comarch");
-        add(panel, "cell 0 6 3 1,grow");
+        add(panel, "cell 0 7 3 1,grow");
     }
 }

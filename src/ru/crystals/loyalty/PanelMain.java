@@ -4,6 +4,7 @@ import java.awt.GridLayout;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -223,6 +224,14 @@ class PanelMain extends JPanel {
 
         SettingsValues.add(edCashPort, dfCashPort, "CashPort", "6515");
         SettingsValues.add(edCashNumber, dfCashNumber, "CashNumber", "");
+
+        {
+            JLabel lll = new JLabel("Дополнительное логирование для отладки:");
+            add(lll, "cell 0 3,alignx trailing");
+            JCheckBox chLogTimeOut = new JCheckBox("");
+            add(chLogTimeOut, "cell 1 3");
+            SettingsValues.add(chLogTimeOut, "LogProcessingDiscount", false);
+        }
 
     }
 
