@@ -11,7 +11,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.swing.AbstractListModel;
@@ -55,7 +57,8 @@ public class MainServicesConfig {
     private JButton btnSave;
     private File serviceDir;
     private PanelService pnService;
-    private JSeparator separator;
+
+    private File conf;
 
     public static void main(String[] args) {
         for (LookAndFeelInfo laf : UIManager.getInstalledLookAndFeels()) {
@@ -139,13 +142,14 @@ public class MainServicesConfig {
             @Override
             public void actionPerformed(ActionEvent e) {
                 SettingsValues.saveAll();
+                reloadTimeHint(conf);
             }
         });
 
         pnService = new PanelService();
         panel.add(pnService);
 
-        separator = new JSeparator();
+        JSeparator separator = new JSeparator();
         separator.setPreferredSize(new Dimension(3, 20));
         separator.setOrientation(SwingConstants.VERTICAL);
         panel.add(separator);
@@ -234,7 +238,7 @@ public class MainServicesConfig {
 
                 pnService.setServiceInfo(serviceName, logFile);
 
-                File conf = new File(serviceDir, dirName + "/" + confName);
+                conf = new File(serviceDir, dirName + "/" + confName);
 
                 if (!conf.exists()) {
                     JOptionPane.showMessageDialog(null, "Не найден файл " + conf.getAbsolutePath(), "Ошибка", JOptionPane.ERROR_MESSAGE);
@@ -261,13 +265,19 @@ public class MainServicesConfig {
                     } else {
                         pnParent.add(new PanelOther());
                     }
+                    reloadTimeHint(conf);
                 }
                 btnSave.setEnabled(true);
             } else {
                 btnSave.setEnabled(false);
+                btnSave.setToolTipText("");
             }
             pnParent.revalidate();
             pnParent.repaint();
         }
+    }
+
+    protected void reloadTimeHint(File conf) {
+        btnSave.setToolTipText("Время файла: " + new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(new Date(conf.lastModified())));
     }
 }
