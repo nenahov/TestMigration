@@ -1,0 +1,9 @@
+[submodule "Services/ServiceConfig"]
+	path = Services/ServiceConfig
+	owner = Services
+	url = https://clearcaseserver/svn/SETv5/ServiceConfig
+	revision = 3824
+	branch = /
+	fetch = :refs/remotes/git-svn
+	remote = svn
+	type = dir
